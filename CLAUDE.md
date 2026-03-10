@@ -18,7 +18,9 @@ Single-namespace (`HerdPress`) MU-plugin with a flat module structure:
   - `static-404s.php` — Intercepts missing static assets that Herd's Nginx misroutes
   - `debug.php` — Sets debug constants as fallback defaults
   - `update-blocker.php` — Short-circuits `api.wordpress.org` update-check requests
-  - `admin-notice.php` — Renders wp-admin status bar
+  - `plugin-deactivator.php` — Suppresses problematic plugins (caching, security, analytics, email) locally
+  - `image-proxy.php` — 302 redirects missing uploads to production server
+  - `admin-bar.php` — Color-coded admin bar with environment details via `herdpress_admin_bar_items` filter
 
 All user-facing configuration constants use the `HERDPRESS_` prefix. The plugin defines `HERDPRESS_DIR` for internal path resolution.
 
