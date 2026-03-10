@@ -34,3 +34,16 @@ function configure_herd_mail( $phpmailer ): void {
 		$phpmailer->FromName = get_bloginfo( 'name' ) . ' (Local)';
 	}
 }
+
+/**
+ * Add mail port status to the admin bar.
+ *
+ * @param array $items Current admin bar items.
+ * @return array
+ */
+function admin_bar_mail_item( array $items ): array {
+	$port          = defined( 'HERDPRESS_SMTP_PORT' ) ? HERDPRESS_SMTP_PORT : 2525;
+	$items['mail'] = 'Mail via :' . $port;
+
+	return $items;
+}

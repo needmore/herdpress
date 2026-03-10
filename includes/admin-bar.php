@@ -28,17 +28,12 @@ function register_admin_bar_menu( \WP_Admin_Bar $wp_admin_bar ): void {
 		],
 	] );
 
-	$host         = $_SERVER['HTTP_HOST'] ?? 'unknown';
-	$php_version  = PHP_VERSION;
-	$mail_port    = defined( 'HERDPRESS_SMTP_PORT' ) ? HERDPRESS_SMTP_PORT : '2525';
-	$updates      = ( defined( 'HERDPRESS_BLOCK_UPDATE_CHECKS' ) && ! HERDPRESS_BLOCK_UPDATE_CHECKS ) ? 'Enabled' : 'Blocked';
-
-	$details = [
-		'host'    => $host,
-		'php'     => 'PHP ' . $php_version,
-		'mail'    => 'Mail via :' . $mail_port,
-		'updates' => 'Updates: ' . $updates,
+	$items = [
+		'host' => $_SERVER['HTTP_HOST'] ?? 'unknown',
+		'php'  => 'PHP ' . PHP_VERSION,
 	];
+
+	$details = apply_filters( 'herdpress_admin_bar_items', $items );
 
 	foreach ( $details as $id => $text ) {
 		$wp_admin_bar->add_node( [

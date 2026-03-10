@@ -57,3 +57,16 @@ function block_update_checks( $preempt, $parsed_args, $url ) {
 
 	return $preempt;
 }
+
+/**
+ * Add update-blocking status to the admin bar.
+ *
+ * @param array $items Current admin bar items.
+ * @return array
+ */
+function admin_bar_updates_item( array $items ): array {
+	$status            = ( defined( 'HERDPRESS_BLOCK_UPDATE_CHECKS' ) && ! HERDPRESS_BLOCK_UPDATE_CHECKS ) ? 'Enabled' : 'Blocked';
+	$items['updates']  = 'Updates: ' . $status;
+
+	return $items;
+}
