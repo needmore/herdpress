@@ -46,6 +46,7 @@ require_once HERDPRESS_DIR . '/includes/mail.php';
 require_once HERDPRESS_DIR . '/includes/static-404s.php';
 require_once HERDPRESS_DIR . '/includes/debug.php';
 require_once HERDPRESS_DIR . '/includes/update-blocker.php';
+require_once HERDPRESS_DIR . '/includes/plugin-deactivator.php';
 require_once HERDPRESS_DIR . '/includes/admin-bar.php';
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
@@ -54,8 +55,10 @@ add_action( 'phpmailer_init',    __NAMESPACE__ . '\\configure_herd_mail', 999 );
 add_action( 'template_redirect', __NAMESPACE__ . '\\fix_static_404s', 1 );
 add_action( 'init',              __NAMESPACE__ . '\\configure_debug_constants', 1 );
 add_filter( 'pre_http_request',  __NAMESPACE__ . '\\block_update_checks', 10, 3 );
+add_filter( 'option_active_plugins',     __NAMESPACE__ . '\\deactivate_plugins_locally', 1 );
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_mail_item', 10 );
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_updates_item', 20 );
+add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_deactivator_item', 30 );
 add_action( 'admin_bar_menu',    __NAMESPACE__ . '\\register_admin_bar_menu', 999 );
 add_action( 'wp_head',           __NAMESPACE__ . '\\admin_bar_styles' );
 add_action( 'admin_head',        __NAMESPACE__ . '\\admin_bar_styles' );
