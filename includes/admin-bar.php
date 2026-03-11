@@ -2,8 +2,8 @@
 /**
  * Admin bar environment indicator.
  *
- * Adds a color-coded icon to the WordPress admin bar with environment
- * details in a hover dropdown. Colors the entire admin bar by environment.
+ * Adds a status dot and environment label to the WordPress admin bar
+ * with details in a hover dropdown.
  *
  * @package HerdPress
  */
@@ -21,7 +21,7 @@ function register_admin_bar_menu( \WP_Admin_Bar $wp_admin_bar ): void {
 
 	$wp_admin_bar->add_node( [
 		'id'    => 'herdpress',
-		'title' => esc_html( $label ),
+		'title' => '<span class="herdpress-dot" aria-hidden="true"></span>' . esc_html( $label ),
 		'meta'  => [
 			'class'    => 'menupop',
 			'tabindex' => 0,
@@ -42,5 +42,27 @@ function register_admin_bar_menu( \WP_Admin_Bar $wp_admin_bar ): void {
 			'title'  => esc_html( $text ),
 		] );
 	}
+}
+
+/**
+ * Output minimal styles for the status dot.
+ */
+function admin_bar_styles(): void {
+	if ( ! is_admin_bar_showing() ) {
+		return;
+	}
+	?>
+	<style>
+		#wpadminbar #wp-admin-bar-herdpress > .ab-item .herdpress-dot {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #3bc248;
+			margin-right: 6px;
+			vertical-align: middle;
+		}
+	</style>
+	<?php
 }
 

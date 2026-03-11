@@ -60,3 +60,5 @@ add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_mail_item'
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_deactivator_item', 30 );
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_image_proxy_item', 40 );
 add_action( 'admin_bar_menu',            __NAMESPACE__ . '\\register_admin_bar_menu', 999 );
+add_action( 'wp_head',                   __NAMESPACE__ . '\\admin_bar_styles' );
+add_action( 'admin_head',               __NAMESPACE__ . '\\admin_bar_styles' );
