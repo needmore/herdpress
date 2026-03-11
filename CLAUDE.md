@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-HerdPress is a WordPress must-use (MU) plugin for local development on Laravel Herd. It auto-detects local environments and configures mail routing, static file 404 fixes, debug constants, update check blocking, and an admin status notice. It does nothing on production — safe if accidentally deployed.
+HerdPress is a WordPress must-use (MU) plugin for local development on Laravel Herd. It auto-detects local environments and configures mail routing, static file 404 fixes, debug constants, plugin suppression, image proxying, and an admin status bar. It does nothing on production — safe if accidentally deployed.
 
 ## Architecture
 
@@ -17,7 +17,6 @@ Single-namespace (`HerdPress`) MU-plugin with a flat module structure:
   - `mail.php` — PHPMailer SMTP override for Herd's mail server
   - `static-404s.php` — Intercepts missing static assets that Herd's Nginx misroutes
   - `debug.php` — Sets debug constants as fallback defaults
-  - `update-blocker.php` — Short-circuits `api.wordpress.org` update-check requests
   - `plugin-deactivator.php` — Suppresses problematic plugins (caching, security, analytics, email) locally
   - `image-proxy.php` — 302 redirects missing uploads to production server
   - `admin-bar.php` — Color-coded admin bar with environment details via `herdpress_admin_bar_items` filter

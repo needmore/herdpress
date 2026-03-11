@@ -1,6 +1,6 @@
 # HerdPress
 
-A WordPress must-use plugin for local development on [Laravel Herd](https://herd.laravel.com). Drop it in, and it handles the annoyances — mail routing, broken static files, debug constants, slow update checks, problematic plugins, and missing uploads — so you can focus on building.
+A WordPress must-use plugin for local development on [Laravel Herd](https://herd.laravel.com). Drop it in, and it handles the annoyances — mail routing, broken static files, debug constants, problematic plugins, and missing uploads — so you can focus on building.
 
 HerdPress auto-detects whether it's running locally and does absolutely nothing if it lands on a production server.
 
@@ -12,13 +12,11 @@ HerdPress auto-detects whether it's running locally and does absolutely nothing 
 
 **Debug constants** — Sets sensible defaults for local development (`SAVEQUERIES`, `WP_DEBUG_DISPLAY`, `SCRIPT_DEBUG`, `WP_ENVIRONMENT_TYPE`, `DISALLOW_FILE_EDIT`) without overriding anything you've already defined in `wp-config.php`.
 
-**Update check blocking** — Intercepts outbound requests to `api.wordpress.org` for core/plugin/theme update checks and short-circuits them. Plugin search and installation still work normally.
-
 **Plugin deactivation** — Automatically suppresses plugins that cause problems locally: caching (W3 Total Cache, WP Super Cache, WP Rocket, etc.), CDN/security (Cloudflare, Wordfence, Sucuri), analytics (Google Analytics, Site Kit), and email (WP Mail SMTP, Fluent SMTP, Post SMTP). Email plugins are especially important to suppress since they can bypass Herd's mail routing even with HerdPress's `phpmailer_init` hook.
 
 **Production image proxy** — Redirects requests for missing uploads to your production server, so you don't need to sync the entire `wp-content/uploads` directory. Just define `HERDPRESS_PRODUCTION_URL` and missing images will 302 redirect to production. Local files are served normally.
 
-**Admin bar** — Shows a color-coded admin bar with environment details in a dropdown: hostname, PHP version, mail config, update-blocking status, suppressed plugin count, and image proxy target.
+**Admin bar** — Shows a color-coded admin bar with environment details in a dropdown: hostname, PHP version, mail config, suppressed plugin count, and image proxy target.
 
 ## Installation
 
@@ -54,7 +52,6 @@ All configuration is optional. Define any of these constants in `wp-config.php` 
 | `HERDPRESS_LOCAL` | *(auto-detected)* | Force enable (`true`) or disable (`false`) the plugin |
 | `HERDPRESS_SMTP_HOST` | `127.0.0.1` | SMTP server host |
 | `HERDPRESS_SMTP_PORT` | `2525` | SMTP server port (use `1025` for Mailpit) |
-| `HERDPRESS_BLOCK_UPDATE_CHECKS` | `true` | Set `false` to allow update checks |
 | `HERDPRESS_DEACTIVATE_PLUGINS` | *(default list)* | `false` to disable, or an array of plugin slugs |
 | `HERDPRESS_PRODUCTION_URL` | *(unset)* | Production URL for image proxy (e.g. `https://example.com`) |
 | `HERDPRESS_UPLOADS_PATH` | `wp-content/uploads` | Custom uploads path for image proxy |
