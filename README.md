@@ -16,7 +16,7 @@ HerdPress auto-detects whether it's running locally and does absolutely nothing 
 
 **Production image proxy** — Redirects requests for missing uploads to your production server, so you don't need to sync the entire `wp-content/uploads` directory. Just define `HERDPRESS_PRODUCTION_URL` and missing images will 302 redirect to production. Local files are served normally.
 
-**Admin bar** — Shows a color-coded admin bar with environment details in a dropdown: hostname, PHP version, mail config, suppressed plugin count, and image proxy target.
+**Admin bar** — Adds an admin bar menu with environment details in a dropdown: hostname, PHP version, mail config, suppressed plugin count, and image proxy target.
 
 ## Installation
 

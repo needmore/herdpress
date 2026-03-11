@@ -19,7 +19,7 @@ Single-namespace (`HerdPress`) MU-plugin with a flat module structure:
   - `debug.php` — Sets debug constants as fallback defaults
   - `plugin-deactivator.php` — Suppresses problematic plugins (caching, security, analytics, email) locally
   - `image-proxy.php` — 302 redirects missing uploads to production server
-  - `admin-bar.php` — Color-coded admin bar with environment details via `herdpress_admin_bar_items` filter
+  - `admin-bar.php` — Admin bar menu with environment details via `herdpress_admin_bar_items` filter
 
 All user-facing configuration constants use the `HERDPRESS_` prefix. The plugin defines `HERDPRESS_DIR` for internal path resolution.
 
