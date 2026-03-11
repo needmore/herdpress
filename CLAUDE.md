@@ -17,7 +17,8 @@ Single-namespace (`HerdPress`) MU-plugin with a flat module structure:
   - `mail.php` — PHPMailer SMTP override for Herd's mail server
   - `static-404s.php` — Intercepts missing static assets that Herd's Nginx misroutes
   - `debug.php` — Sets debug constants as fallback defaults
-  - `plugin-deactivator.php` — Suppresses problematic plugins (caching, security, analytics, email) locally
+  - `woocommerce.php` — Forces WooCommerce staging mode (`WC_STAGING`) when WC is active
+  - `plugin-deactivator.php` — Suppresses problematic plugins (caching, security, analytics, email, marketing) locally
   - `image-proxy.php` — 302 redirects missing uploads to production server
   - `admin-bar.php` — Admin bar menu with environment details via `herdpress_admin_bar_items` filter
 

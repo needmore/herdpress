@@ -54,6 +54,19 @@ function get_deactivated_plugins(): array {
 		'fluent-smtp',
 		'post-smtp',
 		'smtp-mailer',
+
+		// Email marketing / newsletters
+		'mailchimp-for-woocommerce',
+		'mailchimp-for-wp',
+		'constant-contact-forms',
+		'newsletter',
+		'mailpoet',
+		'the-newsletter-plugin',
+
+		// Marketing automation
+		'klaviyo',
+		'hubspot-for-woocommerce',
+		'convertkit',
 	];
 
 	return apply_filters( 'herdpress_deactivated_plugins', $defaults );

@@ -12,7 +12,9 @@ HerdPress auto-detects whether it's running locally and does absolutely nothing 
 
 **Debug constants** — Sets sensible defaults for local development (`SAVEQUERIES`, `WP_DEBUG_DISPLAY`, `SCRIPT_DEBUG`, `WP_ENVIRONMENT_TYPE`, `DISALLOW_FILE_EDIT`) without overriding anything you've already defined in `wp-config.php`.
 
-**Plugin deactivation** — Automatically suppresses plugins that cause problems locally: caching (W3 Total Cache, WP Super Cache, WP Rocket, etc.), CDN/security (Cloudflare, Wordfence, Sucuri), analytics (Google Analytics, Site Kit), and email (WP Mail SMTP, Fluent SMTP, Post SMTP). Email plugins are especially important to suppress since they can bypass Herd's mail routing even with HerdPress's `phpmailer_init` hook.
+**WooCommerce staging mode** — Automatically defines `WC_STAGING` when WooCommerce is active, disabling live payment processing and pausing subscription renewals. No configuration needed.
+
+**Plugin deactivation** — Automatically suppresses plugins that cause problems locally: caching (W3 Total Cache, WP Super Cache, WP Rocket, etc.), CDN/security (Cloudflare, Wordfence, Sucuri), analytics (Google Analytics, Site Kit), email (WP Mail SMTP, Fluent SMTP, Post SMTP), and email marketing/newsletters (Mailchimp, Constant Contact, Klaviyo, HubSpot, ConvertKit, MailPoet). Email plugins are especially important to suppress since they can bypass Herd's mail routing even with HerdPress's `phpmailer_init` hook.
 
 **Production image proxy** — Redirects requests for missing uploads to your production server, so you don't need to sync the entire `wp-content/uploads` directory. Just define `HERDPRESS_PRODUCTION_URL` and missing images will 302 redirect to production. Local files are served normally.
 

@@ -4,7 +4,7 @@
  * Description: Must-use plugin for local WordPress development on Laravel Herd. Reroutes email to Herd's mail server, fixes static file 404s, enables debug tooling, suppresses problematic plugins, and proxies missing uploads. Auto-detects local environment — safe if accidentally deployed.
  * Author: Needmore Designs
  * Author URI: https://needmoredesigns.com
- * Version: 1.1.0
+ * Version: 1.2.0
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
  *
@@ -47,6 +47,7 @@ require_once HERDPRESS_DIR . '/includes/static-404s.php';
 require_once HERDPRESS_DIR . '/includes/debug.php';
 require_once HERDPRESS_DIR . '/includes/plugin-deactivator.php';
 require_once HERDPRESS_DIR . '/includes/image-proxy.php';
+require_once HERDPRESS_DIR . '/includes/woocommerce.php';
 require_once HERDPRESS_DIR . '/includes/admin-bar.php';
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
@@ -55,6 +56,7 @@ add_action( 'phpmailer_init',            __NAMESPACE__ . '\\configure_herd_mail'
 add_action( 'template_redirect',         __NAMESPACE__ . '\\proxy_uploads_to_production', 0 );
 add_action( 'template_redirect',         __NAMESPACE__ . '\\fix_static_404s', 1 );
 add_action( 'init',                      __NAMESPACE__ . '\\configure_debug_constants', 1 );
+add_action( 'plugins_loaded',            __NAMESPACE__ . '\\enable_woocommerce_staging', 1 );
 add_filter( 'option_active_plugins',     __NAMESPACE__ . '\\deactivate_plugins_locally', 1 );
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_mail_item', 10 );
 add_filter( 'herdpress_admin_bar_items', __NAMESPACE__ . '\\admin_bar_deactivator_item', 30 );
